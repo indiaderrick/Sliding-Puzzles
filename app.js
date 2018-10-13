@@ -9,6 +9,7 @@ const squareEight = document.getElementById('eight');
 const blankSquare = document.getElementById('zero');
 const clickCounter = document.getElementById('clickCount');
 const resetButton = document.getElementById('resetButton');
+const sound = document.getElementById('push');
 
 const squaresArray = [squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight, blankSquare];
 
@@ -140,7 +141,6 @@ function checkForWin() {
 }
 
 squaresArray.forEach(function(square) {
-
   square.addEventListener('click', function () {
     // const squareNumber = square.textContent;
     const indexOfClickedSquare = squaresArray.indexOf(square);
@@ -148,17 +148,21 @@ squaresArray.forEach(function(square) {
     if(squareCanMoveLeft(indexOfClickedSquare)) {
       moveSquareLeft(indexOfClickedSquare);
       clickCounter.textContent = 'Click Count = ' + clickCount++;
+      sound.play();
     } else if (squareCanMoveRight(indexOfClickedSquare)) {
       moveSquareRight(indexOfClickedSquare);
       clickCounter.textContent = 'Click Count = ' + clickCount++;
+      sound.play();
       console.log('The click count is ', clickCount);
     } else if (squareCanMoveDown(indexOfClickedSquare)) {
       moveSquareDown(indexOfClickedSquare);
       clickCounter.textContent = 'Click Count = ' + clickCount++;
+      sound.play();
       console.log('The click count is ', clickCount);
     } else if (squareCanMoveUp(indexOfClickedSquare)) {
       moveSquareUp(indexOfClickedSquare);
       clickCounter.textContent = 'Click Count = ' + clickCount++;
+      sound.play();
       console.log('The click count is ', clickCount);
     } else {
       console.log('square cant move');
