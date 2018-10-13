@@ -8,13 +8,56 @@ const squareSeven = document.getElementById('seven');
 const squareEight = document.getElementById('eight');
 const blankSquare = document.getElementById('zero');
 const clickCounter = document.getElementById('clickCount');
-
+const resetButton = document.getElementById('resetButton');
 
 const squaresArray = [squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight, blankSquare];
 
 let clickCount = 1;
 
-function reset()
+// MAKE RANDOM NUMBERS FUNCTION:
+// function generateRandomNumbers() {
+//   const randomNumber = Math.floor(Math.random() * 9);
+//   console.log('IndiaDADADf', randomNumber);
+//   return randomNumber;
+// }
+//RANDOM NUMBERS ARRAY:
+
+// function getNewArray(){
+//   const reshuffledArray = [];
+//   while(reshuffledArray.length < 9) {
+//     const getNumber = generateRandomNumbers();
+//     if(reshuffledArray.indexOf(getNumber) > -1) continue;
+//     reshuffledArray.push(getNumber);
+//
+//     // reshuffledArray[reshuffledArray.length] = getNumber
+//     console.log('The reshuffled array is ', reshuffledArray);
+//   }
+// }
+
+//START FUNCTION:
+
+// loop through the squares array, and get the text.content of every div, then set this text content to a
+// random number.
+//
+// function reshuffleNumbers(){
+//
+//   squaresArray.forEach(function(index){
+//     const theCurrentSquare = squaresArray[index];
+//     let currentNumber = theCurrentSquare.textContent;
+//     console.log('I am currently on square with text: ', currentNumber);
+//     const getNumber = generateRandomNumbers();
+//     currentNumber = getNumber;
+//   });
+// }
+
+// RESET FUNCTION:
+resetButton.addEventListener('click', function (){
+  //reshuffle all blocks
+  clickCounter.textContent = 'Click Count = ' + 0;
+  clickCount = 1;
+  // getNewArray();
+  reshuffleNumbers();
+});
 
 function squareCanMoveLeft(index) {
 
@@ -75,17 +118,26 @@ function squareCanMoveDown(index) {
     return false;
   }
 }
-// CHECK FOR WIN:
-// function checkForWin(squaresArray) {
-//
-//   squaresArray.forEach(function(index) {
-//     if(squaresArray[index] > squaresArray[index + 1]) {
-//       console.log('The squares are not sorted');
-//     } else {
-//       console.log('The squares are sorted');
-//     }
-//   });
-// }
+
+function checkForWin() {
+  const currentOrder = [];
+  squaresArray.forEach(function(square) {
+    const numberInSquare = square.textContent;
+    // console.log(numberInSquare);
+    currentOrder.push(numberInSquare);
+  });
+  console.log(currentOrder);
+  currentOrder.forEach(function(number){
+    console.log(number);
+    //currently gets each number from the current order array... now need to
+    // compare the current one to the one after it each time. NOT SURE ABOUT THIS -1 BIT!!
+    if(number > number - 1) {
+      console.log('The squares are not sorted');
+    } else {
+      console.log('The squares are sorted');
+    }
+  });
+}
 
 squaresArray.forEach(function(square) {
 
@@ -125,7 +177,7 @@ function moveSquareRight(index) {
   currentSquare.textContent = 0;
   currentSquare.style.background = 'black';
   squareOnRight.style.background = 'white';
-  // checkForWin();
+  checkForWin();
 }
 
 function moveSquareLeft(index) {
@@ -140,7 +192,7 @@ function moveSquareLeft(index) {
   currentSquare.style.background = 'black';
   squareOnLeft.style.background = 'white';
   //could make click counter ++ a function!
-  // checkForWin();
+  checkForWin();
 }
 
 function moveSquareUp(index) {
@@ -151,7 +203,7 @@ function moveSquareUp(index) {
   currentSquare.textContent = 0;
   currentSquare.style.background = 'black';
   squareAbove.style.background = 'white';
-  // checkForWin();
+  checkForWin();
 }
 
 function moveSquareDown(index) {
@@ -162,5 +214,5 @@ function moveSquareDown(index) {
   currentSquare.textContent = 0;
   currentSquare.style.background = 'black';
   squareBelow.style.background = 'white';
-  // checkForWin();
+  checkForWin();
 }

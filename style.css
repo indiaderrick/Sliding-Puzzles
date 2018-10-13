@@ -63,9 +63,18 @@ h1, div {
 .sidebar {
   font-size: 40px;
   margin-left: 100px;
-  margin-top: 270px;
+  margin-top: 200px;
 
 }
-.reset {
+#resetbox {
 margin-bottom: 60px;
+}
+#resetButton {
+color: royalblue;
+}
+#startButton {
+  font-size: 60px;
+  margin-left: 100px;
+  margin-top: 200px;
+  color: royalblue;
 }
