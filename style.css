@@ -1,0 +1,54 @@
+body {
+  background-color: white;
+  color: black;
+  font-family: Helvetica, cursive;
+  font-weight: 700;
+}
+h1 {
+  font-size: 100px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  text-align: center;
+  /* animation: pulse 3s infinite; */
+}
+
+/* @keyframes pulse {
+0% {
+  font-size: 100px;
+}
+50% { font-size: 125px;
+  margin-top: 10px;
+}
+100%{
+  font-size: 100px;
+} */
+}
+h1, div {
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+  border: solid black 2px;
+}
+
+.grid div {
+
+  width: 31%;
+  height: auto;
+  margin: 0 2.5px;
+  border: solid black 2px;
+  font-size: 66px;
+  line-height: 125px;
+  text-align: center;
+
+}
+#zero {
+  background-color: black;
+  margin: 3px;
+}
