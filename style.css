@@ -1,7 +1,7 @@
 body {
   background-color: white;
   color: black;
-  font-family: Helvetica, cursive;
+  font-family:'Krub', sans-serif;
   font-weight: 700;
 }
 h1 {
@@ -32,23 +32,40 @@ h1, div {
   flex-wrap: wrap;
   width: 400px;
   height: 400px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  float: right;
+  margin: 0 250px 50px 50px;
   position: relative;
   border: solid black 2px;
+
 }
 
 .grid div {
 
-  width: 31%;
+  width: 32%;
   height: auto;
-  margin: 0 2.5px;
   border: solid black 2px;
   font-size: 66px;
   line-height: 125px;
   text-align: center;
+  margin: 0 auto;
 
 }
 #zero {
   background-color: black;
-  margin: 3px;
+  width: 32%;
+  height: auto;
+  border: solid black 2px;
+  font-size: 66px;
+  line-height: 125px;
+  text-align: center;
+}
+.sidebar {
+  font-size: 40px;
+  margin-left: 100px;
+  margin-top: 270px;
+
+}
+.reset {
+margin-bottom: 60px;
 }

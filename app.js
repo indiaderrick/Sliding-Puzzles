@@ -7,10 +7,15 @@ const squareSix = document.getElementById('six');
 const squareSeven = document.getElementById('seven');
 const squareEight = document.getElementById('eight');
 const blankSquare = document.getElementById('zero');
+const clickCounter = document.getElementById('clickCount');
+
 
 const squaresArray = [squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight, blankSquare];
 
-let clickCount = 0;
+let clickCount = 1;
+
+function reset()
+
 function squareCanMoveLeft(index) {
 
   const squareOnLeft = squaresArray[index - 1];
@@ -70,6 +75,18 @@ function squareCanMoveDown(index) {
     return false;
   }
 }
+// CHECK FOR WIN:
+// function checkForWin(squaresArray) {
+//
+//   squaresArray.forEach(function(index) {
+//     if(squaresArray[index] > squaresArray[index + 1]) {
+//       console.log('The squares are not sorted');
+//     } else {
+//       console.log('The squares are sorted');
+//     }
+//   });
+// }
+
 squaresArray.forEach(function(square) {
 
   square.addEventListener('click', function () {
@@ -78,19 +95,18 @@ squaresArray.forEach(function(square) {
 
     if(squareCanMoveLeft(indexOfClickedSquare)) {
       moveSquareLeft(indexOfClickedSquare);
-      clickCount ++;
-      console.log('The click count is ', clickCount);
+      clickCounter.textContent = 'Click Count = ' + clickCount++;
     } else if (squareCanMoveRight(indexOfClickedSquare)) {
       moveSquareRight(indexOfClickedSquare);
-      clickCount ++;
+      clickCounter.textContent = 'Click Count = ' + clickCount++;
       console.log('The click count is ', clickCount);
     } else if (squareCanMoveDown(indexOfClickedSquare)) {
       moveSquareDown(indexOfClickedSquare);
-      clickCount ++;
+      clickCounter.textContent = 'Click Count = ' + clickCount++;
       console.log('The click count is ', clickCount);
     } else if (squareCanMoveUp(indexOfClickedSquare)) {
       moveSquareUp(indexOfClickedSquare);
-      clickCount ++;
+      clickCounter.textContent = 'Click Count = ' + clickCount++;
       console.log('The click count is ', clickCount);
     } else {
       console.log('square cant move');
@@ -109,6 +125,7 @@ function moveSquareRight(index) {
   currentSquare.textContent = 0;
   currentSquare.style.background = 'black';
   squareOnRight.style.background = 'white';
+  // checkForWin();
 }
 
 function moveSquareLeft(index) {
@@ -122,6 +139,8 @@ function moveSquareLeft(index) {
   currentSquare.textContent = 0;
   currentSquare.style.background = 'black';
   squareOnLeft.style.background = 'white';
+  //could make click counter ++ a function!
+  // checkForWin();
 }
 
 function moveSquareUp(index) {
@@ -132,6 +151,7 @@ function moveSquareUp(index) {
   currentSquare.textContent = 0;
   currentSquare.style.background = 'black';
   squareAbove.style.background = 'white';
+  // checkForWin();
 }
 
 function moveSquareDown(index) {
@@ -142,4 +162,5 @@ function moveSquareDown(index) {
   currentSquare.textContent = 0;
   currentSquare.style.background = 'black';
   squareBelow.style.background = 'white';
+  // checkForWin();
 }
