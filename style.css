@@ -1,5 +1,6 @@
 body {
-  background-color: white;
+  /* background-image: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045); */
+  background-color: black;
   color: black;
   font-family:'Krub', sans-serif;
   font-weight: 700;
@@ -9,6 +10,7 @@ h1 {
   margin-bottom: 30px;
   margin-top: 30px;
   text-align: center;
+  color: white;
   /* animation: pulse 3s infinite; */
 }
 
@@ -34,7 +36,7 @@ h1, div {
   height: 400px;
   /* margin: 0 auto; */
   float: right;
-  margin: 0 250px 50px 50px;
+  margin: -80px 150px 50px 50px;
   position: relative;
   border: solid black 2px;
 
@@ -67,14 +69,48 @@ h1, div {
 
 }
 #resetbox {
-margin-bottom: 60px;
+margin-bottom: 40px;
 }
 #resetButton {
-color: royalblue;
+color: white;
+font-weight: bold;
 }
 #startButton {
   font-size: 60px;
   margin-left: 100px;
   margin-top: 200px;
-  color: royalblue;
+  color: white;
+  font-weight: bold;
 }
+#clickCount {
+  margin-bottom: 60px;
+  color: white;
+  font-weight: bold;
+}
+.image1 {
+  background-image: url("images/001.jpg");
+}
+.image2 {
+  background-image: url("images/002.jpg");
+}
+.image3 {
+  background-image: url("images/003.jpg");
+}
+.image4 {
+  background-image: url("images/004.jpg");
+}
+.image5 {
+  background-image: url("images/005.jpg");
+}
+.image6 {
+  background-image: url("images/006.jpg");
+}
+.image7 {
+  background-image: url("images/007.jpg");
+}
+.image8 {
+  background-image: url("images/008.jpg");
+}
+/* .image0 {
+  background-image: url("images/009.jpg");
+} */

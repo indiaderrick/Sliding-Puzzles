@@ -1,3 +1,4 @@
+
 const squareOne = document.getElementById('one');
 const squareTwo = document.getElementById('two');
 const squareThree = document.getElementById('three');
@@ -16,11 +17,11 @@ const squaresArray = [squareOne, squareTwo, squareThree, squareFour, squareFive,
 let clickCount = 1;
 
 // MAKE RANDOM NUMBERS FUNCTION:
-// function generateRandomNumbers() {
-//   const randomNumber = Math.floor(Math.random() * 9);
-//   console.log('IndiaDADADf', randomNumber);
-//   return randomNumber;
-// }
+function generateRandomNumbers() {
+  const randomNumber = Math.floor(Math.random() * 9);
+  console.log('IndiaDADADf', randomNumber);
+  return randomNumber;
+}
 //RANDOM NUMBERS ARRAY:
 
 // function getNewArray(){
@@ -36,20 +37,23 @@ let clickCount = 1;
 // }
 
 //START FUNCTION:
-
-// loop through the squares array, and get the text.content of every div, then set this text content to a
-// random number.
-//
-// function reshuffleNumbers(){
-//
-//   squaresArray.forEach(function(index){
-//     const theCurrentSquare = squaresArray[index];
-//     let currentNumber = theCurrentSquare.textContent;
-//     console.log('I am currently on square with text: ', currentNumber);
-//     const getNumber = generateRandomNumbers();
-//     currentNumber = getNumber;
-//   });
-// }
+//need to make sure that it only has one of each number. Weird stuff happening with zero & background swaps.
+function reshuffleNumbers(){
+  const uniqueArray = [];
+  squaresArray.forEach(function(square){
+    let numberOfCurrentSquare = square.textContent;
+    const getNumber = generateRandomNumbers();
+    while(uniqueArray.length < 9) {
+      const getNumber = generateRandomNumbers();
+      if(uniqueArray.indexOf(getNumber) > -1) continue;
+      uniqueArray.push(getNumber);
+      // numberOfCurrentSquare = getNumber;
+      // square.textContent = numberOfCurrentSquare;
+    }
+    numberOfCurrentSquare = getNumber;
+    square.textContent = numberOfCurrentSquare;
+  });
+}
 
 // RESET FUNCTION:
 resetButton.addEventListener('click', function (){
@@ -172,6 +176,7 @@ squaresArray.forEach(function(square) {
 
 function moveSquareRight(index) {
   const squareOnRight = squaresArray[index + 1];
+  const theSquareOnRight = squaresArray[index + 1];
   const currentSquare = squaresArray[index];
 
   if (currentSquare === squaresArray[2] || currentSquare === squaresArray[5] || currentSquare === squaresArray[8]) {
@@ -179,6 +184,9 @@ function moveSquareRight(index) {
   }
   squareOnRight.textContent = currentSquare.textContent;
   currentSquare.textContent = 0;
+
+  // squareOnRight.style.backgroundImage = currentSquare.style.backgroundImage;
+  // currentSquare.style.backgroundImage = theSquareOnRight.style.backgroundImage;
   currentSquare.style.background = 'black';
   squareOnRight.style.background = 'white';
   checkForWin();
