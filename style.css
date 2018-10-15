@@ -2,12 +2,15 @@ body {
   /* background-image: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045); */
   background-color: black;
   color: black;
-  font-family:'Krub', sans-serif;
+  /* font-family:'Krub', sans-serif; */
+  /* font-family: 'Charmonman', cursive; */
+  font-family: 'Kanit', sans-serif;
   font-weight: 700;
 }
 h1 {
-  font-size: 100px;
-  margin-bottom: 30px;
+  font-size: 80px;
+  opacity: 0.6;
+  margin-bottom: 20px;
   margin-top: 30px;
   text-align: center;
   color: white;
@@ -46,6 +49,7 @@ h1, div {
 
   width: 32%;
   height: auto;
+   color: rgba(0, 0, 0, 0);
   border: solid black 2px;
   font-size: 66px;
   line-height: 125px;
@@ -65,51 +69,56 @@ h1, div {
 .sidebar {
   font-size: 40px;
   margin-left: 100px;
-  margin-top: 200px;
+  margin-top: 20px;
 
 }
 #resetbox {
-margin-bottom: 40px;
+margin-bottom: 60px;
+opacity: 0.6;
 }
 #resetButton {
 color: white;
 font-weight: bold;
+margin-top: 50px;
+opacity: 0.6;
 }
-#startButton {
+#reshuffle {
   font-size: 60px;
   margin-left: 100px;
-  margin-top: 200px;
+  margin-top: 100px;
   color: white;
   font-weight: bold;
+  opacity: 0.6;
 }
 #clickCount {
-  margin-bottom: 60px;
+  margin-bottom: 70px;
   color: white;
   font-weight: bold;
+  opacity: 0.6;
 }
 .image1 {
-  background-image: url("images/001.jpg");
+  background-image: url("rihanna/part2.jpg");
 }
 .image2 {
-  background-image: url("images/002.jpg");
+  background-image: url("rihanna/part3.jpg");
 }
 .image3 {
-  background-image: url("images/003.jpg");
+  background-image: url("rihanna/part4.jpg");
 }
 .image4 {
-  background-image: url("images/004.jpg");
+  background-image: url("rihanna/part7.jpg");
 }
 .image5 {
-  background-image: url("images/005.jpg");
+  background-image: url("rihanna/part8.jpg");
 }
 .image6 {
-  background-image: url("images/006.jpg");
+  background-image: url("rihanna/part9.jpg");
 }
 .image7 {
-  background-image: url("images/007.jpg");
+  background-image: url("rihanna/part12.jpg");
 }
 .image8 {
-  background-image: url("images/008.jpg");
+  background-image: url("rihanna/part13.jpg");
 }
 .image0 {
   background-color: black;

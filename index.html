@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Project 1</title>
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
   <!-- dont need to import every font -->
   </head>
   <body>
     <h1>Sliding Puzzles</h1>
 
     <audio id="push" src="push.mp3"> </audio>
-    <div><span id="startButton">START</span></div>
+    <div><span id="reshuffle">SHUFFLE</span></div>
     <section class="grid">
-
         <div id="one" class="image1">1</div>
         <div id="two" class ="image2">2</div>
         <div id="three" class ="image3">3</div>
@@ -25,19 +25,15 @@
         <div id="seven" class ="image7">7</div>
         <div id="eight" class ="image8">8</div>
         <div id="zero" class ="image0">0</div>
-
     </section>
-
     <aside class="sidebar">
-
-      <div id="resetbox"> <span id="resetButton">RESET</span></div>
-      <div id="clickCount"> Click Count = 0 </div>
-
+       <span id="resetButton">RESET</span>
+       <br>
+       <br>
+       <br>
+      <!-- <div id="resetbox"> <span id="resetButton">RESET</span></div> -->
+      <span id="clickCount"> Click Count = 0 </span>
     </aside>
-
-
-
-
     <script src="app.js" charset="utf-8"></script>
   </body>
 </html>
