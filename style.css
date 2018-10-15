@@ -111,6 +111,6 @@ font-weight: bold;
 .image8 {
   background-image: url("images/008.jpg");
 }
-/* .image0 {
-  background-image: url("images/009.jpg");
-} */
+.image0 {
+  background-color: black;
+}
