@@ -13,12 +13,15 @@ const clickCounter = document.getElementById('clickCount');
 const resetButton = document.getElementById('resetButton');
 const reshuffle = document.getElementById('reshuffle');
 const sound = document.getElementById('push');
-
-const squaresArray = [squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight, blankSquare];
-
+const congrats = document.querySelector('aside .congrats');
+const currentOrder = [];
 let clickCount = 1;
-
 let newArray = [];
+
+// const squaresArray = [squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight, blankSquare];
+const squaresArray = [ blankSquare, squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight];
+
+congrats.classList.remove('congrats');
 
 // MAKE RANDOM NUMBERS FUNCTION:
 function generateRandomNumbers() {
@@ -138,7 +141,6 @@ function squareCanMoveDown(index) {
     return false;
   }
 }
-
 // function checkForWin() {
 //   const currentOrder = [];
 //   squaresArray.forEach(function(square) {
@@ -155,48 +157,32 @@ function squareCanMoveDown(index) {
 //     }
 //   }).length === currentOrder.length;
 // }
-// const currentOrder = [];
-//
-// function checkForWin() {
-//   squaresArray.forEach(function(square) {
-//     const numberInSquare = square.textContent;
-//     console.log(numberInSquare);
-//     currentOrder.push(numberInSquare);
-//     console.log(currentOrder);
-//     return currentOrder;
-//   });
-// }
-//   function haveIWon() {
-//
-//   currentOrder.filter((number, index, array) => {
-//     if(index === 0) {
-//       return true;
-//     } else {
-//       return number === array[index - 1] + 1;
-//     }
-//   }).length === currentOrder.length;
-// };
+function getCurrentOrder() {
+  const currentOrder = [];
+  squaresArray.forEach(function(square) {
+    const numberInSquare = square.textContent;
+    currentOrder.push(numberInSquare);
+    console.log('This is the current order going crazy:', currentOrder);
+  });
+}
+//THIS FUNCTION DOESNT WORK. ITS RETURNING TRUE STRAIGHT AWAY.
 
-
-// function checkForWin() {
-//   const currentOrder = [];
-//   squaresArray.forEach(function(square) {
-//     const numberInSquare = square.textContent;
-//     console.log(numberInSquare);
-//     currentOrder.push(numberInSquare);
-//   });
-//   console.log(currentOrder);
-//   currentOrder.forEach(function(number){
-//     console.log('THIS IS THE NUMBER', number);
-//     //currently gets each number from the current order array... now need to
-//     // compare the current one to the one after it each time. NOT SURE ABOUT THIS -1 BIT!!
-//     if(number > number - 1) {
-//       console.log('The squares are sorted');
-//     } else {
-//       console.log('The squares are sorted');
-//     }
-//   });
-// }
+function haveIWon() {
+  getCurrentOrder();
+  const check = currentOrder.filter((number, index, array) => {
+    if(index === 0) {
+      return true;
+    } else {
+      return number === array[index - 1] + 1;
+    }
+  }).length === currentOrder.length;
+  if(check){
+    console.log('You have WON THE GAME');
+    congrats.classList.add('congrats');
+  } else {
+    console.log('not quite yet');
+  }
+}
 
 squaresArray.forEach(function(square) {
   square.addEventListener('click', function () {
@@ -240,7 +226,7 @@ function moveSquareRight(index) {
   squareOnRight.classList.remove(background2);
   squareOnRight.classList.add(background1);
   currentSquare.classList.add(background2);
-  checkForWin();
+  haveIWon();
 }
 
 // getNewArray();
@@ -267,7 +253,7 @@ function moveSquareLeft(index) {
   squareOnLeft.classList.remove(background2);
   squareOnLeft.classList.add(background1);
   currentSquare.classList.add(background2);
-  checkForWin();
+  haveIWon();
 }
 
 function moveSquareUp(index) {
@@ -281,7 +267,7 @@ function moveSquareUp(index) {
   squareAbove.classList.remove(background2);
   squareAbove.classList.add(background1);
   currentSquare.classList.add(background2);
-  checkForWin();
+  haveIWon();
 }
 
 function moveSquareDown(index) {
@@ -295,5 +281,5 @@ function moveSquareDown(index) {
   squareBelow.classList.remove(background2);
   squareBelow.classList.add(background1);
   currentSquare.classList.add(background2);
-  checkForWin();
+  haveIWon();
 }

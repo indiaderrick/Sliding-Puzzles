@@ -50,6 +50,7 @@ h1, div {
   width: 32%;
   height: auto;
    color: rgba(0, 0, 0, 0);
+   /* color:yellow; */
   border: solid black 2px;
   font-size: 66px;
   line-height: 125px;
@@ -71,6 +72,20 @@ h1, div {
   margin-left: 100px;
   margin-top: 20px;
 
+}
+.congrats {
+  color: white;
+  opacity: 0.6;
+  color: lightgreen;
+  font-size: 70px;
+}
+/* IF THE ARRAY IS IN ORDER, ADD THIS CLASS */
+/* #congrats {
+  color: white;
+  opacity: 0.6;
+  color: lightgreen;
+  font-size: 70px;
+ */
 }
 #resetbox {
 margin-bottom: 60px;
@@ -97,29 +112,30 @@ opacity: 0.6;
   opacity: 0.6;
 }
 .image1 {
-  background-image: url("rihanna/part2.jpg");
-}
-.image2 {
   background-image: url("rihanna/part3.jpg");
 }
-.image3 {
+.image2 {
   background-image: url("rihanna/part4.jpg");
 }
-.image4 {
+.image3 {
   background-image: url("rihanna/part7.jpg");
 }
-.image5 {
+.image4 {
   background-image: url("rihanna/part8.jpg");
 }
-.image6 {
+.image5 {
   background-image: url("rihanna/part9.jpg");
 }
-.image7 {
+.image6 {
   background-image: url("rihanna/part12.jpg");
 }
-.image8 {
+.image7 {
   background-image: url("rihanna/part13.jpg");
+}
+.image8 {
+  background-image: url("rihanna/part14.jpg");
 }
 .image0 {
   background-color: black;
+  /* background-image: url("rihanna/part2.jpg"); */
 }
