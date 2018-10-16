@@ -7,12 +7,17 @@ body {
   font-family: 'Kanit', sans-serif;
   font-weight: 700;
 }
+/* .body {
+  background-color: green;
+} */
+
 h1 {
   font-size: 80px;
   opacity: 0.6;
   margin-bottom: 20px;
   margin-top: 30px;
-  text-align: center;
+  margin-left: 100px;
+  /* text-align: center; */
   color: white;
   /* animation: pulse 3s infinite; */
 }
@@ -39,7 +44,7 @@ h1, div {
   height: 400px;
   /* margin: 0 auto; */
   float: right;
-  margin: -80px 150px 50px 50px;
+  margin: -80px 80px 50px 50px;
   position: relative;
   border: solid black 2px;
 
@@ -74,10 +79,12 @@ h1, div {
 
 }
 .congrats {
-  color: white;
+  /* color: white; */
+  width: 300px;
   opacity: 0.6;
   color: lightgreen;
-  font-size: 70px;
+  font-size: 20px;
+  line-height: 2px;
 
 }
 /* IF THE ARRAY IS IN ORDER, ADD THIS CLASS */
@@ -111,6 +118,12 @@ opacity: 0.6;
   color: white;
   font-weight: bold;
   opacity: 0.6;
+  margin-right: 20px;
+}
+.replay {
+  color: white;
+  /* margin-left: 20px; */
+  font-size: 50px;
 }
 .image1 {
   background-image: url("rihanna/part3.jpg");
@@ -138,13 +151,15 @@ opacity: 0.6;
 }
 .image0 {
   background-color: black;
-  /* background-image: url("rihanna/part2.jpg"); */
+}
+.win {
+    background-image: url("rihanna/part2.jpg");
 }
 /* .main {
   background-image: url("rihanna/main.png");
 } */
 #sneak {
-  color: white;
+  color: #3D9970;
   font-weight: bold;
   opacity: 0.6;
 }

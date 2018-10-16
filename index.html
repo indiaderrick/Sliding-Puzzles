@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Project 1</title>
-    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <title>Project 1</title>
+  <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
   <!-- dont need to import every font -->
-  </head>
-  <body>
+</head>
+<body class='body'>
+  <main class="screen">
     <h1>Sliding Puzzles</h1>
 
     <audio id="push" src="push.mp3"> </audio>
+    <audio id="winSound" src="win.wav"></audio>
     <div><span id="reshuffle">START/SHUFFLE</span></div>
 
+
     <section class="grid">
-      <div id="zero" class ="image0">0</div>
-        <div id="one" class="image1">1</div>
-        <div id="two" class ="image2">2</div>
-        <div id="three" class ="image3">3</div>
-        <div id="four" class ="image4">4</div>
-        <div id="five" class ="image5">5</div>
-        <div id="six" class ="image6">6</div>
-        <div id="seven" class ="image7">7</div>
-        <div id="eight" class ="image8">8</div>
+      <div id="zero" class ="image0" class="win">0</div>
+      <div id="one" class="image1">1</div>
+      <div id="two" class ="image2">2</div>
+      <div id="three" class ="image3">3</div>
+      <div id="four" class ="image4">4</div>
+      <div id="five" class ="image5">5</div>
+      <div id="six" class ="image6">6</div>
+      <div id="seven" class ="image7">7</div>
+      <div id="eight" class ="image8">8</div>
     </section>
     <aside class="sidebar">
-       <span id="resetButton">RESET</span>
-       <br>
-       <span class="congrats">YOU DID IT!!!</span>
-       <!-- figure out how to give span's margins without using br -->
-       <!-- <div  class="main">.
-       </div> -->
-       <br>
-       <br>
-      <!-- <div id="resetbox"> <span id="resetButton">RESET</span></div> -->
+      <span id="resetButton">RESET</span>
+      <br>
+      <span class="congrats">The aim of the game is to slide the puzzle back to its original state. Only boxes above/below and to the left/right of the black box can be moved. The clicked box will slide to fill the space of the black box.  </span>
+      <div><span class="replay">Click here to play again :)</span></div>
+      <br>
       <span id="clickCount"> Click Count = 0 </span>
       <br>
       <span id="sneak">Show original...</span>
     </aside>
     <script src="app.js" charset="utf-8"></script>
-  </body>
+  </main>
+</body>
 </html>

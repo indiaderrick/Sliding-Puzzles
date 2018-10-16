@@ -1,7 +1,8 @@
 //MAKE A SQUARE WITH 16 PIECES (4X4).
 // WRITE CODE FOR IT, GIVE THE GRID A CLASS E.G. 'GRID16', REMOVE THIS CLASS ON LOAD, IF THEY PRESS
 //THE 16 BUTTON, add this class and remove the 3x3 grid using DOM manipulation.
-//
+//make it so that you can win when you first load the pages...
+//make it so that it doesnt change size when you zoom in or out.
 const squareOne = document.getElementById('one');
 const squareTwo = document.getElementById('two');
 const squareThree = document.getElementById('three');
@@ -15,29 +16,32 @@ const clickCounter = document.getElementById('clickCount');
 const resetButton = document.getElementById('resetButton');
 const reshuffle = document.getElementById('reshuffle');
 const sound = document.getElementById('push');
+const winSound = document.getElementById('winSound');
 const congrats = document.querySelector('aside .congrats');
+const sneakPeak = document.getElementById('sneak');
+// const imgClassOne = document.querySelector('section .image1');
+// const imgClassTwo = document.querySelector('section .image2');
+// const imgClassThree = document.querySelector('section .image3');
+// const imgClassFour = document.querySelector('section .image4');
+// const imgClassFive = document.querySelector('section .image5');
+// const imgClassSix = document.querySelector('section .image6');
+// const imgClassSeven = document.querySelector('section .image7');
+// const imgClassEight = document.querySelector('section .image8');
+// const imgClassZero = document.querySelector('section .image0');
+const body = document.querySelector('body');
+const replay = document.querySelector('.replay');
 let clickCount = 1;
 let newArray = [];
 const correctArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let currentOrder = [];
-const sneakPeak = document.getElementById('sneak');
-
-const imgClassOne = document.querySelector('section .image1');
-const imgClassTwo = document.querySelector('section .image2');
-const imgClassThree = document.querySelector('section .image3');
-const imgClassFour = document.querySelector('section .image4');
-const imgClassFive = document.querySelector('section .image5');
-const imgClassSix = document.querySelector('section .image6');
-const imgClassSeven = document.querySelector('section .image7');
-const imgClassEight = document.querySelector('section .image8');
-const imgClassZero = document.querySelector('section .image0');
-
-// const squaresArray = [squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight, blankSquare];
 const squaresArray = [blankSquare, squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight];
-// const numbersInOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-//remove class that says you've won at start.
-congrats.classList.remove('congrats');
+body.classList.remove('body');
+replay.classList.remove('replay');
 
+// RELOAD PAGE:
+replay.addEventListener('click',function () {
+location.reload();
+})
 // MAKE RANDOM NUMBERS FUNCTION:
 function generateRandomNumbers() {
   const randomNumber = Math.floor(Math.random() * 9);
@@ -63,6 +67,8 @@ function shuffle() {
     square.classList.remove(square.className);
     square.textContent = newArray[index];
     square.classList.add(`image${newArray[index]}`);
+    //remove reset and start/shuffle, add class replay to
+
   });
 }
 
@@ -75,16 +81,16 @@ resetButton.addEventListener('click', function (){
 
 reshuffle.addEventListener('click', function (){
   shuffle();
+  congrats.style.display = 'none';
+  blankSquare.classList.remove('win');
 });
 
 function squareCanMoveLeft(index) {
-
   const squareOnLeft = squaresArray[index - 1];
   if (!squareOnLeft) {
     return false;
   }
   const numberOfSquareOnLeft = squareOnLeft.textContent;
-
   if (numberOfSquareOnLeft === '0') {
     return true;
   } else {
@@ -93,13 +99,11 @@ function squareCanMoveLeft(index) {
 }
 
 function squareCanMoveRight(index) {
-
   const squareOnRight = squaresArray[index + 1];
   if (!squareOnRight) {
     return false;
   }
   const numberOfSquareOnRight = squareOnRight.textContent;
-
   if (numberOfSquareOnRight === '0') {
     return true;
   } else {
@@ -108,13 +112,11 @@ function squareCanMoveRight(index) {
 }
 
 function squareCanMoveUp(index) {
-
   const squareOnUp = squaresArray[index - 3];
   if (!squareOnUp) {
     return false;
   }
   const numberOfSquareOnUp = squareOnUp.textContent;
-
   if (numberOfSquareOnUp === '0') {
     return true;
   } else {
@@ -123,13 +125,11 @@ function squareCanMoveUp(index) {
 }
 
 function squareCanMoveDown(index) {
-
   const squareOnDown = squaresArray[index + 3];
   if (!squareOnDown) {
     return false;
   }
   const numberOfSquareOnDown = squareOnDown.textContent;
-
   if (numberOfSquareOnDown === '0') {
     return true;
   } else {
@@ -137,7 +137,6 @@ function squareCanMoveDown(index) {
   }
 }
 
-//
 function getCurrentOrder() {
   // const currentOrder = [];
   squaresArray.map(function(square) {
@@ -151,15 +150,20 @@ function checkForWin (){
   getCurrentOrder();
   const correctToString = correctArray.join('');
   const currentToString = currentOrder.join('');
-  console.log('as string', correctToString);
-  console.log('as string', currentToString);
-
   if(correctToString === currentToString) {
-    console.log('YOU WIN YAYAYA');
-    congrats.classList.add('congrats');
+    // congrats.classList.add('congrats');
+    blankSquare.classList.add('win');
+    replay.classList.add('replay');
+    reshuffle.style.display = 'none';
+    congrats.style.display = 'inline';
+    congrats.textContent = 'YOU WON.';
+    congrats.style.fontSize = '80px';
+    resetButton.textContent = '';
+    winSound.play();
+    clickCounter.textContent = 'TOTAL SCORE = ' + clickCount;
   } else {
-    console.log('no win yet');
-    congrats.classList.remove('congrats');
+    // congrats.classList.remove('congrats');
+    congrats.style.display = 'none';
   }
   currentOrder = [];
 }
@@ -195,8 +199,10 @@ squaresArray.forEach(function(square) {
     }
   });
 });
+
 //THIS SECTION MOVES THE IMAGES AROUND AND CHECKS FOR WIN EACH TIME A SQUARE MOVES SUCCESSFULLY.
 //COULD MAKE CURRENT DIV GET BIGGER THEN SMALLER WHEN ALL IN RIGHT ORDER. OR ROTAT ALL 360 DEGREES.
+
 function moveSquareRight(index) {
   const squareOnRight = squaresArray[index + 1];
   const currentSquare = squaresArray[index];
@@ -263,16 +269,17 @@ function moveSquareDown(index) {
 //TRYING TO MAKE IT SO THAT WHEN YOU HOVER OVER THIS, IT ADDS THE CLASS OF THE ORIGINAL IMAGES
 //SO PLAYER CAN SEE THE ORIGINAL TO CHECK PROGRESS. REMOVES THEM WHEN HOVER OFF.
 
-sneakPeak.addEventListener('click', function(){
-
-  alert('HELLLOOPP');
-  blankSquare.classList.add(imgClassZero);
-  squareOne.classList.add(imgClassOne);
-  squareTwo.classList.add(imgClassTwo);
-  squareThree.classList.add(imgClassThree);
-  squareFour.classList.add(imgClassFour);
-  squareFive.classList.add(imgClassFive);
-  squareSix.classList.add(imgClassSix);
-  squareSeven.classList.add(imgClassSeven);
-  squareEight.classList.add(imgClassEight);
-});
+// sneakPeak.addEventListener('click', function(){
+//
+//   alert('HELLLOOPP');
+//
+//   // blankSquare.classList.add(imgClassZero);
+//   // squareOne.classList.add(imgClassOne);
+//   // squareTwo.classList.add(imgClassTwo);
+//   // squareThree.classList.add(imgClassThree);
+//   // squareFour.classList.add(imgClassFour);
+//   // squareFive.classList.add(imgClassFive);
+//   // squareSix.classList.add(imgClassSix);
+//   // squareSeven.classList.add(imgClassSeven);
+//   // squareEight.classList.add(imgClassEight);
+// });
