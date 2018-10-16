@@ -23,25 +23,27 @@ const theFiller = document.getElementById('filler');
 const startColor = document.getElementById('first');
 const shuffleColor = document.getElementById('second');
 const page = document.querySelector('body');
-
-// const imgClassOne = document.querySelector('section .image1');
-// const imgClassTwo = document.querySelector('section .image2');
-// const imgClassThree = document.querySelector('section .image3');
-// const imgClassFour = document.querySelector('section .image4');
-// const imgClassFive = document.querySelector('section .image5');
-// const imgClassSix = document.querySelector('section .image6');
-// const imgClassSeven = document.querySelector('section .image7');
-// const imgClassEight = document.querySelector('section .image8');
-// const imgClassZero = document.querySelector('section .image0');
+const imgClassOne = document.querySelector('.image1');
+const imgClassTwo = document.querySelector('.image2');
+const imgClassThree = document.querySelector('.image3');
+const imgClassFour = document.querySelector('.image4');
+const imgClassFive = document.querySelector('.image5');
+const imgClassSix = document.querySelector('.image6');
+const imgClassSeven = document.querySelector('.image7');
+const imgClassEight = document.querySelector('.image8');
+const imgClassZero = document.querySelector('.image0');
 const main = document.querySelector('main');
 const startPage = document.getElementById('startPage');
 const replay = document.querySelector('.replay');
 const start = document.getElementById('startGame');
+const grid = document.getElementById('grid');
+const perfectGrid = document.getElementById('gridPerfect');
 let clickCount = 1;
 let newArray = [];
 const correctArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let currentOrder = [];
 const squaresArray = [blankSquare, squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight];
+perfectGrid.style.display = 'none';
 main.style.display = 'none';
 page.style.backgroundColor = 'white';
 startPage.style.textAlign = 'center';
@@ -297,17 +299,31 @@ function moveSquareDown(index) {
 //TRYING TO MAKE IT SO THAT WHEN YOU HOVER OVER THIS, IT ADDS THE CLASS OF THE ORIGINAL IMAGES
 //SO PLAYER CAN SEE THE ORIGINAL TO CHECK PROGRESS. REMOVES THEM WHEN HOVER OFF.
 
-sneakPeak.addEventListener('click', function(){
-
-  alert('HELLLOOPP');
-
-  blankSquare.classList.add(imgClassZero);
-  squareOne.classList.add(imgClassOne);
-  squareTwo.classList.add(imgClassTwo);
-  squareThree.classList.add(imgClassThree);
-  squareFour.classList.add(imgClassFour);
-  squareFive.classList.add(imgClassFive);
-  squareSix.classList.add(imgClassSix);
-  squareSeven.classList.add(imgClassSeven);
-  squareEight.classList.add(imgClassEight);
+sneakPeak.addEventListener('mouseover', function(){
+  //adds correct grid, removes current
+  perfectGrid.style.display =
+  grid.style.display = 'none';
+  // alert('HELLLOOPP');
+  // blankSquare.className = '';
+  // blankSquare.classList.add('image0');
+  // squareOne.className = '';
+  // squareOne.classList.add('image1');
+  // squareTwo.className = '';
+  // squareTwo.classList.add('image2');
+  // squareThree.className = '';
+  // squareThree.classList.add('image3');
+  // squareFour.className = '';
+  // squareFour.classList.add('image4');
+  // squareFive.className = '';
+  // squareFive.classList.add('image5');
+  // squareSix.className = '';
+  // squareSix.classList.add('image6');
+  // squareSeven.className = '';
+  // squareSeven.classList.add('image7');
+  // squareEight.className = '';
+  // squareEight.classList.add('image8');
+});
+sneakPeak.addEventListener('mouseout', function(){
+  perfectGrid.style.display ='none';
+  grid.style.display='block';
 });
