@@ -20,10 +20,21 @@ let clickCount = 1;
 let newArray = [];
 const correctArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let currentOrder = [];
+const sneakPeak = document.getElementById('sneak');
+
+const imgClassOne = document.querySelector('section .image1');
+const imgClassTwo = document.querySelector('section .image2');
+const imgClassThree = document.querySelector('section .image3');
+const imgClassFour = document.querySelector('section .image4');
+const imgClassFive = document.querySelector('section .image5');
+const imgClassSix = document.querySelector('section .image6');
+const imgClassSeven = document.querySelector('section .image7');
+const imgClassEight = document.querySelector('section .image8');
+const imgClassZero = document.querySelector('section .image0');
 
 // const squaresArray = [squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight, blankSquare];
 const squaresArray = [blankSquare, squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight];
-const numbersInOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+// const numbersInOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 //remove class that says you've won at start.
 congrats.classList.remove('congrats');
 
@@ -58,6 +69,7 @@ function shuffle() {
 resetButton.addEventListener('click', function (){
   clickCounter.textContent = 'Click Count = ' + 0;
   clickCount = 1;
+  congrats.classList.remove('congrats');
   shuffle();
 });
 
@@ -124,25 +136,6 @@ function squareCanMoveDown(index) {
     return false;
   }
 }
-// function checkForWin() {
-//   const currentOrder = [];
-//   squaresArray.forEach(function(square) {
-//     const numberInSquare = square.textContent;
-//     console.log(numberInSquare);
-//     currentOrder.push(numberInSquare);
-//     console.log(currentOrder);
-//   });
-//   currentOrder.filer((number, index, array) => {
-//     if(index === 0) {
-//       return true;
-//     } else {
-//       return number === array[index - 1] + 1;
-//     }
-//   }).length === currentOrder.length;
-// }
-//create a new array with the ordered numbers. Get the current array and iterate through both
-// to compare the values at each index. IF === the same, then player has won.
-//place this check for win function inside function that moves boxes.
 
 //
 function getCurrentOrder() {
@@ -156,8 +149,8 @@ function getCurrentOrder() {
 
 function checkForWin (){
   getCurrentOrder();
-  const correctToString = correctArray.join ('');
-  const currentToString = currentOrder.join ('');
+  const correctToString = correctArray.join('');
+  const currentToString = currentOrder.join('');
   console.log('as string', correctToString);
   console.log('as string', currentToString);
 
@@ -170,42 +163,9 @@ function checkForWin (){
   }
   currentOrder = [];
 }
-// const currentOrderAsNumbers =
-//   const toNumber = parseInt(currentOrder);
-//   if(toNumber === correctArray) {
-//     console.log('YOU WON');
-//   } else {
-//     console.log('naaaah');
-//   }
-// }
-// function haveIWon() {
-//   getCurrentOrder();
-//   const toNumber = parseInt(currentOrder);
-//   if(toNumber === correctArray) {
-//     console.log('YOU WON');
-//   } else {
-//     console.log('naaaah');
-//   }
-// }
-
-//THIS FUNCTION DOESNT WORK. ITS RETURNING TRUE STRAIGHT AWAY.
-//WRITE ARRAY - correct array...... and compare them!!!
-// function haveIWon() {
-//   getCurrentOrder();
-//   const check = currentOrder.filter((number, index, array) => {
-//     if(index === 0) {
-//       return true;
-//     } else {
-//       return number === array[index - 1] + 1;
-//     }
-//   }).length === currentOrder.length;
-//   if(check){
-//     console.log('You have WON THE GAME');
-//     congrats.classList.add('congrats');
-//   } else {
-//     console.log('not quite yet');
-//   }
-// }
+//EVENT LISTENERS FOR EACH SQUARE, RUNS THE FUNCTION THE CHECK IF THE SQUARE CAN MOVE, AND IF IT
+//CAN, IT THEN FUNS THE FUNCTION TO MOVE IT. ALSO ADDS ONE TO CLICK COUNT AND PLAYS SOUND
+//EACH TIME A SQUARE MOVES SUCCESSFULLY.
 
 squaresArray.forEach(function(square) {
   square.addEventListener('click', function () {
@@ -235,6 +195,7 @@ squaresArray.forEach(function(square) {
     }
   });
 });
+//THIS SECTION MOVES THE IMAGES AROUND AND CHECKS FOR WIN EACH TIME A SQUARE MOVES SUCCESSFULLY.
 //COULD MAKE CURRENT DIV GET BIGGER THEN SMALLER WHEN ALL IN RIGHT ORDER. OR ROTAT ALL 360 DEGREES.
 function moveSquareRight(index) {
   const squareOnRight = squaresArray[index + 1];
@@ -253,14 +214,6 @@ function moveSquareRight(index) {
   checkForWin();
 }
 
-// getNewArray();
-// squaresArray.forEach((square, index) => {
-//   //remove the current class
-//   square.classList.remove(square.className);
-//   square.textContent = newArray[index];
-//   square.classList.add(`image${newArray[index]}`);
-// });
-// });
 
 function moveSquareLeft(index) {
   const squareOnLeft = squaresArray[index - 1];
@@ -306,3 +259,20 @@ function moveSquareDown(index) {
   currentSquare.classList.add(background2);
   checkForWin();
 }
+
+//TRYING TO MAKE IT SO THAT WHEN YOU HOVER OVER THIS, IT ADDS THE CLASS OF THE ORIGINAL IMAGES
+//SO PLAYER CAN SEE THE ORIGINAL TO CHECK PROGRESS. REMOVES THEM WHEN HOVER OFF.
+
+sneakPeak.addEventListener('click', function(){
+
+  alert('HELLLOOPP');
+  blankSquare.classList.add(imgClassZero);
+  squareOne.classList.add(imgClassOne);
+  squareTwo.classList.add(imgClassTwo);
+  squareThree.classList.add(imgClassThree);
+  squareFour.classList.add(imgClassFour);
+  squareFive.classList.add(imgClassFive);
+  squareSix.classList.add(imgClassSix);
+  squareSeven.classList.add(imgClassSeven);
+  squareEight.classList.add(imgClassEight);
+});

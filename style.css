@@ -107,7 +107,7 @@ opacity: 0.6;
   opacity: 0.6;
 }
 #clickCount {
-  margin-bottom: 70px;
+  /* margin-bottom: 70px; */
   color: white;
   font-weight: bold;
   opacity: 0.6;
@@ -139,4 +139,12 @@ opacity: 0.6;
 .image0 {
   background-color: black;
   /* background-image: url("rihanna/part2.jpg"); */
+}
+/* .main {
+  background-image: url("rihanna/main.png");
+} */
+#sneak {
+  color: white;
+  font-weight: bold;
+  opacity: 0.6;
 }
