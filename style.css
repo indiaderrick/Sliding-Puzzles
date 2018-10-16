@@ -7,9 +7,6 @@ body {
   font-family: 'Kanit', sans-serif;
   font-weight: 700;
 }
-/* .body {
-  background-color: green;
-} */
 
 h1 {
   font-size: 80px;
@@ -47,7 +44,6 @@ h1, div {
   margin: -80px 80px 50px 50px;
   position: relative;
   border: solid black 2px;
-
 }
 
 .grid div {
@@ -120,6 +116,7 @@ opacity: 0.6;
   opacity: 0.6;
   margin-right: 20px;
 }
+
 .replay {
   color: white;
   /* margin-left: 20px; */
@@ -158,8 +155,25 @@ opacity: 0.6;
 /* .main {
   background-image: url("rihanna/main.png");
 } */
+#filler {
+  color: black;
+  font-size: 20px;
+}
 #sneak {
   color: #3D9970;
   font-weight: bold;
   opacity: 0.6;
+}
+#first {
+  color: lightgreen;
+}
+#second {
+  color: lightgreen;
+}
+#startPage {
+  /* color: white; */
+  font-size: 30px;
+  line-height: 80px;
+  background-color: white;
+  color: lightgreen;
 }

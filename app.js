@@ -19,6 +19,11 @@ const sound = document.getElementById('push');
 const winSound = document.getElementById('winSound');
 const congrats = document.querySelector('aside .congrats');
 const sneakPeak = document.getElementById('sneak');
+const theFiller = document.getElementById('filler');
+const startColor = document.getElementById('first');
+const shuffleColor = document.getElementById('second');
+const page = document.querySelector('body');
+
 // const imgClassOne = document.querySelector('section .image1');
 // const imgClassTwo = document.querySelector('section .image2');
 // const imgClassThree = document.querySelector('section .image3');
@@ -28,20 +33,36 @@ const sneakPeak = document.getElementById('sneak');
 // const imgClassSeven = document.querySelector('section .image7');
 // const imgClassEight = document.querySelector('section .image8');
 // const imgClassZero = document.querySelector('section .image0');
-const body = document.querySelector('body');
+const main = document.querySelector('main');
+const startPage = document.getElementById('startPage');
 const replay = document.querySelector('.replay');
+const start = document.getElementById('startGame');
 let clickCount = 1;
 let newArray = [];
 const correctArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let currentOrder = [];
 const squaresArray = [blankSquare, squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight];
-body.classList.remove('body');
+main.style.display = 'none';
+page.style.backgroundColor = 'white';
+startPage.style.textAlign = 'center';
+startPage.style.marginTop = '200px';
 replay.classList.remove('replay');
-
+theFiller.style.display = 'none';
+shuffleColor.style.color = 'white';
+resetButton.textContent = 'INSTRUCTIONS:';
+// START GAME PAGE:
+function startGame(){
+  start.addEventListener('click', function() {
+    main.style.display = 'block';
+    page.style.backgroundColor = 'black';
+    startPage.style.display = 'none';
+  });
+}
+startGame();
 // RELOAD PAGE:
 replay.addEventListener('click',function () {
-location.reload();
-})
+  location.reload();
+});
 // MAKE RANDOM NUMBERS FUNCTION:
 function generateRandomNumbers() {
   const randomNumber = Math.floor(Math.random() * 9);
@@ -75,14 +96,17 @@ function shuffle() {
 resetButton.addEventListener('click', function (){
   clickCounter.textContent = 'Click Count = ' + 0;
   clickCount = 1;
-  congrats.classList.remove('congrats');
+  congrats.style.display = 'none';
   shuffle();
 });
 
 reshuffle.addEventListener('click', function (){
   shuffle();
   congrats.style.display = 'none';
+  startColor.style.color = 'white';
+  shuffleColor.style.color = 'lightgreen';
   blankSquare.classList.remove('win');
+  resetButton.textContent = 'RESET';
 });
 
 function squareCanMoveLeft(index) {
@@ -161,9 +185,13 @@ function checkForWin (){
     resetButton.textContent = '';
     winSound.play();
     clickCounter.textContent = 'TOTAL SCORE = ' + clickCount;
+    sneakPeak.style.display = 'none';
+    theFiller.style.display = 'block';
   } else {
     // congrats.classList.remove('congrats');
     congrats.style.display = 'none';
+    startColor.style.color = 'white';
+    shuffleColor.style.color = 'lightgreen';
   }
   currentOrder = [];
 }
@@ -269,17 +297,17 @@ function moveSquareDown(index) {
 //TRYING TO MAKE IT SO THAT WHEN YOU HOVER OVER THIS, IT ADDS THE CLASS OF THE ORIGINAL IMAGES
 //SO PLAYER CAN SEE THE ORIGINAL TO CHECK PROGRESS. REMOVES THEM WHEN HOVER OFF.
 
-// sneakPeak.addEventListener('click', function(){
-//
-//   alert('HELLLOOPP');
-//
-//   // blankSquare.classList.add(imgClassZero);
-//   // squareOne.classList.add(imgClassOne);
-//   // squareTwo.classList.add(imgClassTwo);
-//   // squareThree.classList.add(imgClassThree);
-//   // squareFour.classList.add(imgClassFour);
-//   // squareFive.classList.add(imgClassFive);
-//   // squareSix.classList.add(imgClassSix);
-//   // squareSeven.classList.add(imgClassSeven);
-//   // squareEight.classList.add(imgClassEight);
-// });
+sneakPeak.addEventListener('click', function(){
+
+  alert('HELLLOOPP');
+
+  blankSquare.classList.add(imgClassZero);
+  squareOne.classList.add(imgClassOne);
+  squareTwo.classList.add(imgClassTwo);
+  squareThree.classList.add(imgClassThree);
+  squareFour.classList.add(imgClassFour);
+  squareFive.classList.add(imgClassFive);
+  squareSix.classList.add(imgClassSix);
+  squareSeven.classList.add(imgClassSeven);
+  squareEight.classList.add(imgClassEight);
+});

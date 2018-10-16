@@ -2,23 +2,27 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Project 1</title>
+  <title>Sliding Puzzles</title>
   <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
-  <!-- dont need to import every font -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet"> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet"> -->
 </head>
 <body class='body'>
-  <main class="screen">
+  <div id="startPage">
+    WELCOME TO MY GAME
+    <hr>
+    <span id="startGame">Click to continue....</span>
+  </div>
+  <main class='screen'>
     <h1>Sliding Puzzles</h1>
+    <span id='filler'>Lorem ipsum dolor dolor sum dolor sit amet, consectetur adipisicing elisum dolor sit amet, consectetur adipisicing elit, sedsit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrl mollit anim id est laborum.</span>
 
     <audio id="push" src="push.mp3"> </audio>
     <audio id="winSound" src="win.wav"></audio>
-    <div><span id="reshuffle">START/SHUFFLE</span></div>
 
-
+    <div><span id="reshuffle"><span id='first'>START</span><span id='second'>/SHUFFLE</span></span></div>
     <section class="grid">
       <div id="zero" class ="image0" class="win">0</div>
       <div id="one" class="image1">1</div>
@@ -34,7 +38,7 @@
       <span id="resetButton">RESET</span>
       <br>
       <span class="congrats">The aim of the game is to slide the puzzle back to its original state. Only boxes above/below and to the left/right of the black box can be moved. The clicked box will slide to fill the space of the black box.  </span>
-      <div><span class="replay">Click here to play again :)</span></div>
+      <div><span class="replay">Click here to play again.</span></div>
       <br>
       <span id="clickCount"> Click Count = 0 </span>
       <br>
