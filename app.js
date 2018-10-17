@@ -22,7 +22,9 @@ const clickCounter = document.getElementById('clickCount');
 const resetButton = document.getElementById('resetButton');
 const reshuffle = document.getElementById('reshuffle');
 const sound = document.getElementById('push');
+const enter = document.getElementById('enter');
 const winSound = document.getElementById('winSound');
+const wrong = document.getElementById('wrong');
 const congrats = document.querySelector('aside .congrats');
 const sneakPeak = document.getElementById('sneak');
 const theFiller = document.getElementById('filler');
@@ -78,7 +80,7 @@ function startGame(){
     const name = input.value;
     const nameUpper = name.charAt(0).toUpperCase() + name.substr(1);
     congrats.textContent = `Hello ${nameUpper} . The aim of the game is to slide the puzzle back to its original state. Only boxes above/below and to the left/right of the black box can be moved. The clicked box will slide to fill the space of the black box.`;
-    helper.style.dislpay = 'none';
+    enter.play();
   });
 }
 startGame();
@@ -124,6 +126,7 @@ resetButton.addEventListener('click', function (){
   clickCount = 1;
   congrats.style.display = 'none';
   riri.style.display = 'none';
+  hide.style.display = 'none';
   shuffle();
 });
 
@@ -213,7 +216,7 @@ function checkForWin (){
     replay.style.display = 'block';
     replay.classList.add('replay');
     reshuffle.style.display = 'none';
-    congrats.textContent = 'YOU WON.';
+    congrats.textContent = '✰YOU WON✰';
     resetButton.style.border = 'none';
     congrats.classList.add('congrats');
     congrats.style.marginBottom = '40px';
@@ -226,7 +229,7 @@ function checkForWin (){
     const name = input.value;
     const nameUpper = name.toUpperCase();
     // clickCounter.textContent = 'TOTAL SCORE = ' + clickCount;
-    clickCounter.textContent = `${nameUpper}'s TOTAL SCORE = ${clickCount}`;
+    clickCounter.textContent = `↭ ${nameUpper}'s TOTAL SCORE = ${clickCount} ↭`;
     sneakPeak.style.display = 'none';
     theFiller.style.display = 'block';
     container.classList.remove('hiders');
@@ -270,6 +273,7 @@ squaresArray.forEach(function(square) {
       sound.play();
       moveSquareUp(indexOfClickedSquare);
     } else {
+      wrong.play();
       console.log('square cant move');
       //add a sound here...
     }

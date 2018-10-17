@@ -176,7 +176,9 @@ padding: 1px 8px;
   color: #3D9970;
   font-weight: bold;
   opacity: 0.6;
-  border-bottom: green 2px solid;
+}
+#sneak:hover {
+  border-bottom: green 3px dotted;
 }
 #first {
   color: lightgreen;
@@ -240,12 +242,14 @@ padding: 1px 8px;
 .slideOutRight {
   -webkit-animation-name: slideOutRight;
   animation-name: slideOutRight;
-}
-#startGame {
-  color: green;
+
 }
 #startGame:hover {
   color: black;
+}
+
+#startGame {
+  color: green;
 }
 
 @keyframes rotateOnWin {
