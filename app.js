@@ -1,8 +1,13 @@
-//MAKE A SQUARE WITH 16 PIECES (4X4).
-// WRITE CODE FOR IT, GIVE THE GRID A CLASS E.G. 'GRID16', REMOVE THIS CLASS ON LOAD, IF THEY PRESS
-//THE 16 BUTTON, add this class and remove the 3x3 grid using DOM manipulation.
-//make it so that you can win when you first load the pages...
+// after homepage, divs(rounded) for 9 or 16 selection
+//background homepage image
+// then divs to select IMAGES (maybe before)
+// write 16 code in seperate js file.
+// glitch on refresh page & bug with click count
 //make it so that it doesnt change size when you zoom in or out.
+//make intro page slide out...
+// get it to take a name input at start
+// mute/unmute button
+//different picture
 const squareOne = document.getElementById('one');
 const squareTwo = document.getElementById('two');
 const squareThree = document.getElementById('three');
@@ -38,33 +43,48 @@ const replay = document.querySelector('.replay');
 const start = document.getElementById('startGame');
 const grid = document.getElementById('grid');
 const perfectGrid = document.getElementById('gridPerfect');
+const container = document.querySelector('.hiders');
+const slideLeft = document.querySelector('.slideOutLeft');
+const slideRight = document.querySelector('.slideOutRight');
+// const winnerSpin = document.querySelector('.winnerSpin');
+const input = document.querySelector('input');
 let clickCount = 1;
 let newArray = [];
 const correctArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let currentOrder = [];
 const squaresArray = [blankSquare, squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight];
+replay.style.display = 'none';
+blankSquare.classList.remove('rotate');
 perfectGrid.style.display = 'none';
 main.style.display = 'none';
 page.style.backgroundColor = 'white';
 startPage.style.textAlign = 'center';
-startPage.style.marginTop = '200px';
-replay.classList.remove('replay');
+startPage.style.marginTop = '130px';
+// replay.classList.remove('replay');
 theFiller.style.display = 'none';
 shuffleColor.style.color = 'white';
 resetButton.textContent = 'INSTRUCTIONS:';
+clickCounter.style.display = 'none';
+sneakPeak.style.display = 'none';
 // START GAME PAGE:
+
 function startGame(){
   start.addEventListener('click', function() {
     main.style.display = 'block';
     page.style.backgroundColor = 'black';
     startPage.style.display = 'none';
+    slideLeft.classList.add('slideOutLeft');
+    slideRight.classList.add('slideOutRight');
+    page.classList.remove('body')
   });
-}
+};
+
 startGame();
 // RELOAD PAGE:
 replay.addEventListener('click',function () {
   location.reload();
 });
+
 // MAKE RANDOM NUMBERS FUNCTION:
 function generateRandomNumbers() {
   const randomNumber = Math.floor(Math.random() * 9);
@@ -78,8 +98,6 @@ function getNewArray(){
     const getNumber = generateRandomNumbers();
     if(reshuffledArray.indexOf(getNumber) > -1) continue;
     reshuffledArray.push(getNumber);
-    // reshuffledArray[reshuffledArray.length] = getNumber
-    console.log('The reshuffled array is ', reshuffledArray);
     newArray = reshuffledArray;
   }
 }
@@ -90,13 +108,14 @@ function shuffle() {
     square.classList.remove(square.className);
     square.textContent = newArray[index];
     square.classList.add(`image${newArray[index]}`);
-    //remove reset and start/shuffle, add class replay to
+    resetButton.style.display = 'inline';
+    resetButton.textContent = 'RESET';
 
   });
 }
 
 resetButton.addEventListener('click', function (){
-  clickCounter.textContent = 'Click Count = ' + 0;
+  clickCounter.textContent = 'CLICK COUNT = ' + 0;
   clickCount = 1;
   congrats.style.display = 'none';
   shuffle();
@@ -104,11 +123,16 @@ resetButton.addEventListener('click', function (){
 
 reshuffle.addEventListener('click', function (){
   shuffle();
+  clickCounter.style.display = 'inline';
+  sneakPeak.style.display = 'inline';
   congrats.style.display = 'none';
   startColor.style.color = 'white';
   shuffleColor.style.color = 'lightgreen';
   blankSquare.classList.remove('win');
-  resetButton.textContent = 'RESET';
+  container.style.display = 'none';
+  container.classList.remove('hiders');
+  // resetButton.textContent = 'RESET';
+  // resetButton.style.border = 'none';
 });
 
 function squareCanMoveLeft(index) {
@@ -177,23 +201,33 @@ function checkForWin (){
   const correctToString = correctArray.join('');
   const currentToString = currentOrder.join('');
   if(correctToString === currentToString) {
-    // congrats.classList.add('congrats');
     blankSquare.classList.add('win');
+    replay.style.display = 'inline';
+    blankSquare.classList.add('rotate');
+    replay.style.display = 'block';
     replay.classList.add('replay');
     reshuffle.style.display = 'none';
-    congrats.style.display = 'inline';
     congrats.textContent = 'YOU WON.';
+    congrats.classList.add('congrats');
+    congrats.style.marginBottom = '40px';
+    congrats.style.color = 'lightgreen';
     congrats.style.fontSize = '80px';
     resetButton.textContent = '';
     winSound.play();
     clickCounter.textContent = 'TOTAL SCORE = ' + clickCount;
     sneakPeak.style.display = 'none';
     theFiller.style.display = 'block';
+    container.classList.remove('hiders');
+    container.style.display = 'none';
   } else {
-    // congrats.classList.remove('congrats');
-    congrats.style.display = 'none';
+    congrats.classList.remove('congrats');
     startColor.style.color = 'white';
     shuffleColor.style.color = 'lightgreen';
+    resetButton.textContent = 'RESET';
+    clickCounter.style.display = 'inline';
+    sneakPeak.style.display = 'inline';
+
+
   }
   currentOrder = [];
 }
@@ -206,21 +240,21 @@ squaresArray.forEach(function(square) {
     // const squareNumber = square.textContent;
     const indexOfClickedSquare = squaresArray.indexOf(square);
     if(squareCanMoveLeft(indexOfClickedSquare)) {
-      clickCounter.textContent = 'Click Count = ' + clickCount++;
+      clickCounter.textContent = 'CLICK COUNT = ' + clickCount++;
       sound.play();
       moveSquareLeft(indexOfClickedSquare);
     } else if (squareCanMoveRight(indexOfClickedSquare)) {
-      clickCounter.textContent = 'Click Count = ' + clickCount++;
+      clickCounter.textContent = 'CLICK COUNT = ' + clickCount++;
       sound.play();
       moveSquareRight(indexOfClickedSquare);
       console.log('The click count is ', clickCount);
     } else if (squareCanMoveDown(indexOfClickedSquare)) {
-      clickCounter.textContent = 'Click Count = ' + clickCount++;
+      clickCounter.textContent = 'CLICK COUNT = ' + clickCount++;
       sound.play();
       moveSquareDown(indexOfClickedSquare);
       console.log('The click count is ', clickCount);
     } else if (squareCanMoveUp(indexOfClickedSquare)) {
-      clickCounter.textContent = 'Click Count = ' + clickCount++;
+      clickCounter.textContent = 'CLICK COUNT = ' + clickCount++;
       sound.play();
       moveSquareUp(indexOfClickedSquare);
     } else {
@@ -300,30 +334,28 @@ function moveSquareDown(index) {
 //SO PLAYER CAN SEE THE ORIGINAL TO CHECK PROGRESS. REMOVES THEM WHEN HOVER OFF.
 
 sneakPeak.addEventListener('mouseover', function(){
-  //adds correct grid, removes current
-  perfectGrid.style.display =
-  grid.style.display = 'none';
-  // alert('HELLLOOPP');
-  // blankSquare.className = '';
-  // blankSquare.classList.add('image0');
-  // squareOne.className = '';
-  // squareOne.classList.add('image1');
-  // squareTwo.className = '';
-  // squareTwo.classList.add('image2');
-  // squareThree.className = '';
-  // squareThree.classList.add('image3');
-  // squareFour.className = '';
-  // squareFour.classList.add('image4');
-  // squareFive.className = '';
-  // squareFive.classList.add('image5');
-  // squareSix.className = '';
-  // squareSix.classList.add('image6');
-  // squareSeven.className = '';
-  // squareSeven.classList.add('image7');
-  // squareEight.className = '';
-  // squareEight.classList.add('image8');
+  perfectGrid.style.display = 'block';
 });
 sneakPeak.addEventListener('mouseout', function(){
   perfectGrid.style.display ='none';
-  grid.style.display='block';
 });
+
+// alert('HELLLOOPP');
+// blankSquare.className = '';
+// blankSquare.classList.add('image0');
+// squareOne.className = '';
+// squareOne.classList.add('image1');
+// squareTwo.className = '';
+// squareTwo.classList.add('image2');
+// squareThree.className = '';
+// squareThree.classList.add('image3');
+// squareFour.className = '';
+// squareFour.classList.add('image4');
+// squareFive.className = '';
+// squareFive.classList.add('image5');
+// squareSix.className = '';
+// squareSix.classList.add('image6');
+// squareSeven.className = '';
+// squareSeven.classList.add('image7');
+// squareEight.className = '';
+// squareEight.classList.add('image8');

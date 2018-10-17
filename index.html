@@ -6,25 +6,26 @@
   <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet"> -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
 </head>
 <body class='body'>
   <div id="startPage">
-    WELCOME TO MY GAME
-    <hr>
-    <span id="startGame">Click to continue....</span>
+      <span class='nameInput'>Enter your name below: </span>
+      <div><input type="text" name="name" placeholder="Enter Your Name"></div>
+      <span class="slideOutLeft">WELCOME TO SLIDING PUZZLES</span><hr>
+      <span id="startGame" class="slideOutRight">Click to continue...</span>
   </div>
   <main class='screen'>
+
     <h1>Sliding Puzzles</h1>
     <span id='filler'>Lorem ipsum dolor dolor sum dolor sit amet, consectetur adipisicing elisum dolor sit amet, consectetur adipisicing elit, sedsit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrl mollit anim id est laborum.</span>
-
     <audio id="push" src="push.mp3"> </audio>
     <audio id="winSound" src="win.wav"></audio>
 
-    <div><span id="reshuffle"><span id='first'>START</span><span id='second'>/SHUFFLE</span></span></div>
-    <section class="grid" id="grid">
-      <div id="zero" class ="image0" class="win">0</div>
+    <div class="topTitle"><span id="reshuffle"><span id='first'>START</span><span id='second'>/SHUFFLE</span></span></div>
+    <section class="grid" class="winnerSpin" id="grid">
+      <div id="zero" class ="image0" class="win" class='rotate'>0</div>
       <div id="one" class="image1">1</div>
       <div id="two" class ="image2">2</div>
       <div id="three" class ="image3">3</div>
@@ -46,16 +47,27 @@
       <div id="seven" class ="image7">7</div>
       <div id="eight" class ="image8">8</div>
     </section>
+
     <aside class="sidebar">
-      <span id="resetButton">RESET</span>
-      <br>
-      <span class="congrats">The aim of the game is to slide the puzzle back to its original state. Only boxes above/below and to the left/right of the black box can be moved. The clicked box will slide to fill the space of the black box.  </span>
-      <div><span class="replay">Click here to play again.</span></div>
-      <br>
-      <span id="clickCount"> Click Count = 0 </span>
-      <br>
+      <span id="resetButton">RESET</span><br>
+
+      <div class="container">
+        <p class="typing">
+          <span class="congrats">The aim of the game is to slide the puzzle back to its original state. Only boxes above/below and to the left/right of the black box can be moved. The clicked box will slide to fill the space of the black box.  </span>
+        </p>
+        <div class="hiders">
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+      <div><span class="replay">Click here to play again.</span></div><br>
+      <span id="clickCount"> CLICK COUNT = 0 </span><br>
       <span id="sneak">Show original...</span>
+      <img src="" alt="">
     </aside>
+
     <script src="app.js" charset="utf-8"></script>
   </main>
 </body>

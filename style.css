@@ -19,16 +19,7 @@ h1 {
   /* animation: pulse 3s infinite; */
 }
 
-/* @keyframes pulse {
-0% {
-  font-size: 100px;
-}
-50% { font-size: 125px;
-  margin-top: 10px;
-}
-100%{
-  font-size: 100px;
-} */
+
 }
 h1, div {
   text-align: center;
@@ -57,8 +48,15 @@ h1, div {
   line-height: 125px;
   text-align: center;
   margin: 0 auto;
-
 }
+div:hover {
+  border-color: lightgreen;
+}
+
+#zero:hover {
+  border-color: lightgreen;
+}
+
 #zero {
   background-color: black;
   width: 32%;
@@ -68,10 +66,16 @@ h1, div {
   line-height: 125px;
   text-align: center;
 }
+#first:hover {
+  border-bottom: 4px lightgreen solid;
+}
+#second:hover {
+  border-bottom: 4px lightgreen solid;
+}
 .sidebar {
   font-size: 40px;
   margin-left: 100px;
-  margin-top: 20px;
+  margin-top: 30px;
 
 }
 .congrats {
@@ -82,6 +86,13 @@ h1, div {
   font-size: 20px;
   line-height: 2px;
 
+}
+.prompt {
+  padding: 10px;
+  font-size: 20px;
+  border: solid white 2px;
+  color: white;
+  opacity: 0.8;
 }
 /* IF THE ARRAY IS IN ORDER, ADD THIS CLASS */
 /* #congrats {
@@ -122,6 +133,7 @@ opacity: 0.6;
   /* margin-left: 20px; */
   font-size: 50px;
 }
+
 .image1 {
   background-image: url("rihanna/part3.jpg");
 }
@@ -172,8 +184,166 @@ opacity: 0.6;
 }
 #startPage {
   /* color: white; */
-  font-size: 30px;
-  line-height: 80px;
-  background-color: white;
+  font-size: 40px;
+  line-height: 60px;
+  /* background-color: white; */
   color: lightgreen;
+  min-height: 100vh;
+  background-size: cover;
 }
+.perfectGrid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  /* margin: 0 auto; */
+  float: right;
+  margin: -80px 80px 50px 50px;
+  position: relative;
+  border: solid black 2px;
+}
+
+@keyframes slideOutLeft {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.slideOutLeft {
+  -webkit-animation-name: slideOutLeft;
+  animation-name: slideOutLeft;
+}
+
+
+@keyframes slideOutRight {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.slideOutRight {
+  -webkit-animation-name: slideOutRight;
+  animation-name: slideOutRight;
+}
+#startGame {
+  color: green;
+}
+#startGame:hover {
+  color: black;
+}
+
+@keyframes rotateOnWin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rotate {
+  background-color: blue;
+  animation-name: rotateOnWin;
+  animation-duration: 2s;
+}
+
+@keyframes typing {
+    from { width: 100% }
+    to { width: 0 }
+
+}
+
+.container {
+  position: relative;
+  width: 640px;
+}
+
+.typing {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  z-index: -1;
+
+}
+
+.hiders {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.hiders p {
+  position: relative;
+  clear: both;
+  margin: 0;
+  float: right;
+  width:0; /* graceful degradation: if animation doesn't work, these are invisible by default */
+  animation: typing 1s steps(30, end);
+  animation-fill-mode: both;
+  background-color: black;
+  z-index: -1
+}
+
+.hiders p:nth-child(2) {
+  animation-delay: 1s;
+}
+.hiders p:nth-child(3) {
+  animation-delay: 2s;
+}
+.hiders p:nth-child(4) {
+  animation-delay: 3s;
+}
+.hiders p:nth-child(5) {
+  animation-delay: 4s;
+}
+
+.replay {
+  z-index: 1;
+  margin-top: 70px;
+}
+.clickCount {
+  padding-bottom: : 60px;
+}
+::placeholder {
+  color: green;
+  font-size: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+input {
+  border-radius: 10%;
+  padding: 10px;
+  font-family: 'Courier New';
+  font-size: 20px;
+  border-color: green;
+  background-color: lightgreen;
+  color: green;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+.body{
+    font-family: 'Courier New';
+    background-image: url('background.jpg');
+    background-size: cover;
+    z-index: +1;
+    bottom: 0;
+}
+.topTitle {
+  margin-top: -20px;
+}
+startPage
