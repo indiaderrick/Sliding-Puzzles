@@ -12,7 +12,7 @@
 <body class='body'>
   <div id="startPage">
       <span class='nameInput'>Enter your name below: </span>
-      <div><input type="text" name="name" placeholder="Enter Your Name"></div>
+      <div><input type="text" name="name" placeholder="Enter Your Name"></input></div>
       <span class="slideOutLeft">WELCOME TO SLIDING PUZZLES</span><hr>
       <span id="startGame" class="slideOutRight">Click to continue...</span>
   </div>
@@ -36,6 +36,8 @@
       <div id="eight" class ="image8">8</div>
     </section>
 
+    <img class="riri" src="rihanna/main.png" alt="riri" style="height: 250px; width: 250px;">
+
     <section id="gridPerfect">
       <div id="zero" class ="image0" class="win">0</div>
       <div id="one" class="image1">1</div>
@@ -49,8 +51,7 @@
     </section>
 
     <aside class="sidebar">
-      <span id="resetButton">RESET</span><br>
-
+      <span id="resetButton">RESET</span>
       <div class="container">
         <p class="typing">
           <span class="congrats">The aim of the game is to slide the puzzle back to its original state. Only boxes above/below and to the left/right of the black box can be moved. The clicked box will slide to fill the space of the black box.  </span>
@@ -63,9 +64,10 @@
         </div>
       </div>
       <div><span class="replay">Click here to play again.</span></div><br>
+      <!-- <img src="" alt=""> -->
       <span id="clickCount"> CLICK COUNT = 0 </span><br>
       <span id="sneak">Show original...</span>
-      <img src="" alt="">
+      <span class="hide">Click again to hide.</span>
     </aside>
 
     <script src="app.js" charset="utf-8"></script>

@@ -8,6 +8,7 @@
 // get it to take a name input at start
 // mute/unmute button
 //different picture
+
 const squareOne = document.getElementById('one');
 const squareTwo = document.getElementById('two');
 const squareThree = document.getElementById('three');
@@ -28,15 +29,6 @@ const theFiller = document.getElementById('filler');
 const startColor = document.getElementById('first');
 const shuffleColor = document.getElementById('second');
 const page = document.querySelector('body');
-const imgClassOne = document.querySelector('.image1');
-const imgClassTwo = document.querySelector('.image2');
-const imgClassThree = document.querySelector('.image3');
-const imgClassFour = document.querySelector('.image4');
-const imgClassFive = document.querySelector('.image5');
-const imgClassSix = document.querySelector('.image6');
-const imgClassSeven = document.querySelector('.image7');
-const imgClassEight = document.querySelector('.image8');
-const imgClassZero = document.querySelector('.image0');
 const main = document.querySelector('main');
 const startPage = document.getElementById('startPage');
 const replay = document.querySelector('.replay');
@@ -46,13 +38,16 @@ const perfectGrid = document.getElementById('gridPerfect');
 const container = document.querySelector('.hiders');
 const slideLeft = document.querySelector('.slideOutLeft');
 const slideRight = document.querySelector('.slideOutRight');
-// const winnerSpin = document.querySelector('.winnerSpin');
 const input = document.querySelector('input');
+const riri = document.querySelector('.riri');
+const hide = document.querySelector('.hide');
 let clickCount = 1;
 let newArray = [];
 const correctArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let currentOrder = [];
 const squaresArray = [blankSquare, squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight];
+hide.style.display = 'none';
+riri.style.display = 'none';
 replay.style.display = 'none';
 blankSquare.classList.remove('rotate');
 perfectGrid.style.display = 'none';
@@ -63,10 +58,14 @@ startPage.style.marginTop = '130px';
 // replay.classList.remove('replay');
 theFiller.style.display = 'none';
 shuffleColor.style.color = 'white';
-resetButton.textContent = 'INSTRUCTIONS:';
+resetButton.textContent = 'INSTRUCTIONS';
+resetButton.style.textDecoration = 'underline dotted';
 clickCounter.style.display = 'none';
 sneakPeak.style.display = 'none';
+
 // START GAME PAGE:
+const name = input.value;
+const nameUpper = name.charAt(0).toUpperCase() + name.substr(1);
 
 function startGame(){
   start.addEventListener('click', function() {
@@ -75,12 +74,16 @@ function startGame(){
     startPage.style.display = 'none';
     slideLeft.classList.add('slideOutLeft');
     slideRight.classList.add('slideOutRight');
-    page.classList.remove('body')
+    page.classList.remove('body');
+    const name = input.value;
+    const nameUpper = name.charAt(0).toUpperCase() + name.substr(1);
+    congrats.textContent = `Hello ${nameUpper} . The aim of the game is to slide the puzzle back to its original state. Only boxes above/below and to the left/right of the black box can be moved. The clicked box will slide to fill the space of the black box.`;
+    helper.style.dislpay = 'none';
   });
-};
-
+}
 startGame();
 // RELOAD PAGE:
+
 replay.addEventListener('click',function () {
   location.reload();
 });
@@ -110,6 +113,8 @@ function shuffle() {
     square.classList.add(`image${newArray[index]}`);
     resetButton.style.display = 'inline';
     resetButton.textContent = 'RESET';
+    resetButton.style.border = 'solid lightgreen 2px';
+    resetButton.style.textDecoration = 'none';
 
   });
 }
@@ -118,6 +123,7 @@ resetButton.addEventListener('click', function (){
   clickCounter.textContent = 'CLICK COUNT = ' + 0;
   clickCount = 1;
   congrats.style.display = 'none';
+  riri.style.display = 'none';
   shuffle();
 });
 
@@ -208,13 +214,19 @@ function checkForWin (){
     replay.classList.add('replay');
     reshuffle.style.display = 'none';
     congrats.textContent = 'YOU WON.';
+    resetButton.style.border = 'none';
     congrats.classList.add('congrats');
     congrats.style.marginBottom = '40px';
     congrats.style.color = 'lightgreen';
     congrats.style.fontSize = '80px';
+    hide.style.display = 'none';
+    riri.style.display = 'none';
     resetButton.textContent = '';
     winSound.play();
-    clickCounter.textContent = 'TOTAL SCORE = ' + clickCount;
+    const name = input.value;
+    const nameUpper = name.toUpperCase();
+    // clickCounter.textContent = 'TOTAL SCORE = ' + clickCount;
+    clickCounter.textContent = `${nameUpper}'s TOTAL SCORE = ${clickCount}`;
     sneakPeak.style.display = 'none';
     theFiller.style.display = 'block';
     container.classList.remove('hiders');
@@ -224,10 +236,10 @@ function checkForWin (){
     startColor.style.color = 'white';
     shuffleColor.style.color = 'lightgreen';
     resetButton.textContent = 'RESET';
+    resetButton.style.textDecoration = 'none';
+    resetButton.style.border = 'solid lightgreen 2px';
     clickCounter.style.display = 'inline';
     sneakPeak.style.display = 'inline';
-
-
   }
   currentOrder = [];
 }
@@ -333,29 +345,12 @@ function moveSquareDown(index) {
 //TRYING TO MAKE IT SO THAT WHEN YOU HOVER OVER THIS, IT ADDS THE CLASS OF THE ORIGINAL IMAGES
 //SO PLAYER CAN SEE THE ORIGINAL TO CHECK PROGRESS. REMOVES THEM WHEN HOVER OFF.
 
-sneakPeak.addEventListener('mouseover', function(){
-  perfectGrid.style.display = 'block';
-});
-sneakPeak.addEventListener('mouseout', function(){
-  perfectGrid.style.display ='none';
+sneakPeak.addEventListener('click', function(){
+  riri.style.display = 'block';
+  hide.style.display = 'inline';
 });
 
-// alert('HELLLOOPP');
-// blankSquare.className = '';
-// blankSquare.classList.add('image0');
-// squareOne.className = '';
-// squareOne.classList.add('image1');
-// squareTwo.className = '';
-// squareTwo.classList.add('image2');
-// squareThree.className = '';
-// squareThree.classList.add('image3');
-// squareFour.className = '';
-// squareFour.classList.add('image4');
-// squareFive.className = '';
-// squareFive.classList.add('image5');
-// squareSix.className = '';
-// squareSix.classList.add('image6');
-// squareSeven.className = '';
-// squareSeven.classList.add('image7');
-// squareEight.className = '';
-// squareEight.classList.add('image8');
+riri.addEventListener('click', function(){
+  riri.style.display = 'none';
+  hide.style.display = 'none';
+});
