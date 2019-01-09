@@ -1,9 +1,6 @@
 body {
-  /* background-image: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045); */
   background-color: black;
   color: black;
-  /* font-family:'Krub', sans-serif; */
-  /* font-family: 'Charmonman', cursive; */
   font-family: 'Kanit', sans-serif;
   font-weight: 700;
 }
@@ -85,6 +82,7 @@ div:hover {
   color: lightgreen;
   font-size: 20px;
   line-height: 2px;
+  /* position: relative; */
 
 }
 .prompt {

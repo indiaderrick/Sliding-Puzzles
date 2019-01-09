@@ -1,14 +1,4 @@
-// after homepage, divs(rounded) for 9 or 16 selection
-//background homepage image
-// then divs to select IMAGES (maybe before)
-// write 16 code in seperate js file.
-// glitch on refresh page & bug with click count
-//make it so that it doesnt change size when you zoom in or out.
-//make intro page slide out...
-// get it to take a name input at start
-// mute/unmute button
-//different picture
-
+//DOM & GLOBAL VARIABLES:
 const squareOne = document.getElementById('one');
 const squareTwo = document.getElementById('two');
 const squareThree = document.getElementById('three');
@@ -43,11 +33,15 @@ const slideRight = document.querySelector('.slideOutRight');
 const input = document.querySelector('input');
 const riri = document.querySelector('.riri');
 const hide = document.querySelector('.hide');
+
 let clickCount = 1;
 let newArray = [];
 const correctArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let currentOrder = [];
 const squaresArray = [blankSquare, squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven, squareEight];
+
+// SHOULD HAVE DONE OBJECTS FOR EACH SQUARE - saved number and background image in them
+// this should all be in a function or object:
 hide.style.display = 'none';
 riri.style.display = 'none';
 replay.style.display = 'none';
@@ -57,7 +51,6 @@ main.style.display = 'none';
 page.style.backgroundColor = 'white';
 startPage.style.textAlign = 'center';
 startPage.style.marginTop = '130px';
-// replay.classList.remove('replay');
 theFiller.style.display = 'none';
 shuffleColor.style.color = 'white';
 resetButton.textContent = 'INSTRUCTIONS';
@@ -113,6 +106,7 @@ function shuffle() {
     square.classList.remove(square.className);
     square.textContent = newArray[index];
     square.classList.add(`image${newArray[index]}`);
+
     resetButton.style.display = 'inline';
     resetButton.textContent = 'RESET';
     resetButton.style.border = 'solid lightgreen 2px';
@@ -210,6 +204,7 @@ function checkForWin (){
   const correctToString = correctArray.join('');
   const currentToString = currentOrder.join('');
   if(correctToString === currentToString) {
+    //this looks awful - should all be in an object or something!!!
     blankSquare.classList.add('win');
     replay.style.display = 'inline';
     blankSquare.classList.add('rotate');
@@ -217,6 +212,7 @@ function checkForWin (){
     replay.classList.add('replay');
     reshuffle.style.display = 'none';
     congrats.textContent = '✰YOU WON✰';
+    //maybe need to set the display of the congrats to block.
     resetButton.style.border = 'none';
     congrats.classList.add('congrats');
     congrats.style.marginBottom = '40px';
@@ -228,7 +224,6 @@ function checkForWin (){
     winSound.play();
     const name = input.value;
     const nameUpper = name.toUpperCase();
-    // clickCounter.textContent = 'TOTAL SCORE = ' + clickCount;
     clickCounter.textContent = `↭ ${nameUpper}'s TOTAL SCORE = ${clickCount} ↭`;
     sneakPeak.style.display = 'none';
     theFiller.style.display = 'block';
@@ -252,7 +247,6 @@ function checkForWin (){
 
 squaresArray.forEach(function(square) {
   square.addEventListener('click', function () {
-    // const squareNumber = square.textContent;
     const indexOfClickedSquare = squaresArray.indexOf(square);
     if(squareCanMoveLeft(indexOfClickedSquare)) {
       clickCounter.textContent = 'CLICK COUNT = ' + clickCount++;
@@ -280,26 +274,28 @@ squaresArray.forEach(function(square) {
   });
 });
 
-//THIS SECTION MOVES THE IMAGES AROUND AND CHECKS FOR WIN EACH TIME A SQUARE MOVES SUCCESSFULLY.
-//COULD MAKE CURRENT DIV GET BIGGER THEN SMALLER WHEN ALL IN RIGHT ORDER. OR ROTAT ALL 360 DEGREES.
-
 function moveSquareRight(index) {
+  //store the current square & the square to the right in their own consts.
   const squareOnRight = squaresArray[index + 1];
   const currentSquare = squaresArray[index];
+  // store the class name of each of these in a const.
   const background1 = currentSquare.className;
   const background2 = squareOnRight.className;
+
   if (currentSquare === squaresArray[2] || currentSquare === squaresArray[5] || currentSquare === squaresArray[8]) {
     return;
   }
+  //set the text content of the square on the right to the one of the current square, and set the current square to zero.
+  // Necessary for the comparisons!!
   squareOnRight.textContent = currentSquare.textContent;
   currentSquare.textContent = 0;
+  //in order to get them to 'swap places', swap their class names - this will switch the background image.
   currentSquare.classList.remove(background1);
   squareOnRight.classList.remove(background2);
   squareOnRight.classList.add(background1);
   currentSquare.classList.add(background2);
   checkForWin();
 }
-
 
 function moveSquareLeft(index) {
   const squareOnLeft = squaresArray[index - 1];
