@@ -204,7 +204,7 @@ function checkForWin (){
   const correctToString = correctArray.join('');
   const currentToString = currentOrder.join('');
   if(correctToString === currentToString) {
-    //this looks awful - should all be in an object or something!!!
+    //this looks awful !!
     blankSquare.classList.add('win');
     replay.style.display = 'inline';
     blankSquare.classList.add('rotate');
@@ -342,8 +342,6 @@ function moveSquareDown(index) {
   checkForWin();
 }
 
-//TRYING TO MAKE IT SO THAT WHEN YOU HOVER OVER THIS, IT ADDS THE CLASS OF THE ORIGINAL IMAGES
-//SO PLAYER CAN SEE THE ORIGINAL TO CHECK PROGRESS. REMOVES THEM WHEN HOVER OFF.
 
 sneakPeak.addEventListener('click', function(){
   riri.style.display = 'block';

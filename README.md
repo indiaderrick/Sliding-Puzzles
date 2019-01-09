@@ -1,67 +1,88 @@
 # General Assembly WDI Project 1: Sliding Puzzles
 
+> Project 1 of 4 during my Web Development Immersive course at General Assembly
+
 Link to [GitHub Repo](https://github.com/indiaderrick/wdi-project-one/tree/gh-pages)
 
-## Subtitle
+[Play Sliding Puzzles](https://indiaderrick.github.io/wdi-project-one/)
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+### Brief
 
-• screenshots --> mv (tilda)/desktop/filename.png
+To create a single-page grid-based game, using HTML, CSS, and JavaScript technologies learnt in the first three weeks of the course.
 
-• mv (filename).png screenshots/1.png
+## Concept
 
-## Homepage
-![Homepage](screenshots/intro.png)
-
-## Instructions
-![Instructions](screenshots/instructions.png)
-
-## In Play
-
-![In Play](screenshots/play.png)
-
-## Winning Screen
-
-![Winning Screen](screenshots/win.png)
-
-## Brief
-
-To create a single-page grid-based game, using HTML, CSS, and JavaScript technologies learnt in the first three weeks of WDI.
+This was my first ever JavaScript project so I chose to make a simple game - sliding puzzles. When the player clicks to start, the pieces of the puzzle are randomised and the aim of the game is to recreate the original picture. Only puzzle pieces above/below or to the left/right of the black box can be moved - when clicked, they will slide to fill the space of the black box and therefore swap positions. Once all of the pieces are in the right place, the final piece of the puzzle automatically appears to complete it.
 
 ## Technologies Used
 
-* HTML5 with HTML5 audio
-
-* CSS3 with animation
-
-* JavaScript (ECMAScript 6)
-
-* Git
-
-* GitHub
-
-* Google Fonts
-
-* Sound Bible
+| Category | List |
+| ---- | --- |
+| Languages                            | Javascript (ECMAScript6), CSS3, HTML5 |
+| Typefaces                            | Google Fonts |
+| Sounds                               | Sound Bible |
+| Text Editor                          | Atom |
+| Browser                              | Chrome |
+| Version control | Git and GitHub
 
 
-## Featured Piece of Code
+## What to Expect
+> The game includes:
 
-inline `function()` like this.
+  - Personalisation whereby you enter your name on the landing page and the instructions are then dictated to you using a typewriter effect.
+  - Players click counts are recorded and displayed on win.
+  - Lots of sound effects which get very annoying after a very short amount of time.
+  - Ability to view the original image as an aid during play.
+  - Reset or reshuffle.
+
+## Final Product
+
+### Homepage
+
+<p align="center">
+  <img height=380 alt="userProfile" src="./screenshots/intro.png">
+</p>
+
+### Instructions
+
+<p align="center">
+  <img height=380 alt="userProfile" src="./screenshots/instructions.png">
+</p>
+
+### In Play
+
+<p align="center">
+  <img height=380 alt="userProfile" src="./screenshots/play.png">
+</p>
+
+### Winning Screen
+
+<p align="center">
+  <img height=380 alt="userProfile" src="./screenshots/win.png">
+</p>
+
+
+## Some Logic
+
+Each piece of the puzzle was represented by its text content (hidden) as a number from 0 to 8. At the start when all the pieces are in order, this is reflective of their position in the array, i.e the piece with the text content 3 was also at index [3] in the array. When the pieces are shuffled at the start of play, these no longer match and it is only when they match up again that the player wins.
+
+ The piece with the text content of 0 was the black box. This would swap with whichever piece of the puzzle the user clicked and therefore change position in the array. An <strong> issue that I came across </strong> was when the black box was at a leftmost or rightmost positions on the puzzle (see image below). The pieces would skip to the far side of the row above/below if you clicked the piece at the previous/next position in the array. For example, referencing the image below, if you clicked the piece with the text content '4' ([3]), the black box would jump down a line and consume position [3] in the array. Although with JS you can move horizontally through an array - this is not how a sliding puzzle should work. You should not be able to move beyond the end of a line. Hence, I included an if statement to check whether the black box was at the end of the line. The code snippet below shows a statement that returns if the black box is at any of the rightmost positions - inhibiting it from moving further right. The same logic was used for inhibiting leftward movement on the other side.
+
+> You can't move right from this position:
 
 ```[javascript]
-function(){
-  return 'hello world';
+if (currentSquare === squaresArray[2] || currentSquare === squaresArray[5] || currentSquare === squaresArray[8]) {
+  return;
+}
 }
 ```
+<p align="center">
+  <img height=480 alt="userProfile" src="./screenshots/logicImg.png">
+</p>
 
 ## Styling
 
 I used two Google Fonts:  Courier New for the homepage, and Kanit for all other components of the game.
-
-## Wins and Blockers
-
-Notes: found it hard to translate the logic of a sliding puzzle into JS/ to represent it. Mention that it was hard (for me, but not in theory) to ge the background images to swap based on the text content they contained. Also - indexing how you are going to move the squares was difficult --> use index +1/-1 and +3/-3 but this would mean that when the black square was at index [2]/[5]/[8], it could skip down to the next line (index 0/3/6) & vice versa on the left hand side. Added an if statement so that if this was the case, the function would return and the square would not move.
 
 ## Future Features
 
